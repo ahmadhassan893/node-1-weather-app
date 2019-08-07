@@ -10,6 +10,9 @@ const viewsPath = path.join(__dirname, "../templetes/views");
 const partialsPath = path.join(__dirname, "../templetes/partials");
 
 const app = express();
+
+const port = process.env.PORT || 3000;
+
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
@@ -99,6 +102,6 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Server is on up to port 3000");
+app.listen(port, () => {
+  console.log("Server is on up to port " + port);
 });

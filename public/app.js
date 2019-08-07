@@ -27,17 +27,15 @@ const UItemprature = document.querySelector(".temprature");
 
 weatherForm.addEventListener("submit", e => {
   e.preventDefault();
-  fetch(`http://localhost:3000/weather?address=${input.value}`).then(
-    response => {
-      response.json().then(data => {
-        if (data.error) {
-          UIlocation.innerHTML = data.error;
-        } else {
-          UIlocation.innerHTML = data.location;
-          UItemprature.innerHTML = data.data.temprature;
-        }
-      });
-    }
-  );
+  fetch(`/weather?address=${input.value}`).then(response => {
+    response.json().then(data => {
+      if (data.error) {
+        UIlocation.innerHTML = data.error;
+      } else {
+        UIlocation.innerHTML = data.location;
+        UItemprature.innerHTML = data.data.temprature;
+      }
+    });
+  });
   input.value = "";
 });
