@@ -1,4 +1,5 @@
 const request = require("request");
+const roundNum = require("./roundNum");
 
 const forcast = function(long, lat, callback) {
   const url = `https://api.darksky.net/forecast/01f506d26524b616800ce3bffd3911d9/${long},${lat}`;
@@ -10,7 +11,7 @@ const forcast = function(long, lat, callback) {
       callback("Unable to find location");
     } else {
       callback(undefined, {
-        temprature: body.currently.temperature
+        temprature: roundNum((5 / 9) * (body.currently.temperature - 32))
       });
     }
   });
